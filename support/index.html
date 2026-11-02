@@ -21,8 +21,8 @@
 <link rel="icon" href="/assets/img/brand/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/img/brand/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/img/brand/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/fonts/inter.css">
+<link rel="preload" href="/assets/fonts/jakarta-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/jakarta.css">
 <link rel="stylesheet" href="/assets/css/site.css">
 <script src="/assets/js/site.js" defer></script>
 
@@ -33,20 +33,24 @@
   <nav class="globalnav-inner" aria-label="Global">
     <a class="brand" href="/" aria-label="Digital AI Labs home"><img class="mark" src="/assets/img/brand/mark.svg" alt="" width="100" height="90"><span>Digital <span class="ai">AI</span> Labs</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="globalnav-menu"><span class="sr-only">Menu</span><span class="menu-icon" aria-hidden="true"></span></button>
-    <ul class="globalnav-list" id="globalnav-menu">
-      <li><a href="/smart-notes/">Smart Notes</a></li>
-      <li><a href="/family-tree/">Family Tree</a></li>
-      <li><a href="/gravito/">Gravito</a></li>
-      <li><a href="/about/">About</a></li>
-      <li><a href="/support/" aria-current="page">Support</a></li>
-    </ul>
+    <div class="globalnav-menu" id="globalnav-menu">
+      <ul class="globalnav-list">
+        <li class="has-menu"><button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-products">Products<svg class="caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="menu-panel" id="menu-products"><ul class="menu-items"><li><a href="/smart-notes/"><img src="/assets/img/icons/smart-notes.png" alt="" width="40" height="40"><span><strong>Smart Notes</strong><small>Note, organize and capture your ideas anytime.</small></span></a></li><li><a href="/family-tree/"><img src="/assets/img/icons/family-tree.png" alt="" width="40" height="40"><span><strong>Family Tree</strong><small>Build, explore and preserve your family history.</small></span></a></li><li><a href="/gravito/"><img src="/assets/img/icons/gravito.png" alt="" width="40" height="40"><span><strong>Gravito</strong><small>A gravity-inspired color sort puzzle game.</small></span></a></li></ul><a class="menu-foot" href="https://play.google.com/store/apps/developer?id=Digital+AI+Labs">All apps on Google Play</a></div></li>
+        <li class="has-menu"><button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu-solutions">Solutions<svg class="caret" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="menu-panel" id="menu-solutions"><ul class="menu-items"><li><a href="/solutions/#engineering"><svg class="svc-icon" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 6 4 14l16 8 16-8z"/><path d="m4 20 16 8 16-8"/><path d="m4 26 16 8 16-8"/></g></svg><span><strong>Product Engineering</strong><small>Build, scale and modernize digital products.</small></span></a></li><li><a href="/solutions/#ai"><svg class="svc-icon" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="10" width="20" height="20" rx="4"/><rect x="16" y="16" width="8" height="8" rx="1.5"/><path d="M15 4v6M20 4v6M25 4v6M15 30v6M20 30v6M25 30v6M4 15h6M4 20h6M4 25h6M30 15h6M30 20h6M30 25h6"/></g></svg><span><strong>AI &amp; Automation</strong><small>Leverage AI to improve productivity and experiences.</small></span></a></li><li><a href="/solutions/#apps"><svg class="svc-icon" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="8" width="26" height="18" rx="2.5"/><path d="M10 31h12" stroke-linecap="round"/><rect x="24" y="15" width="13" height="21" rx="2.5" fill="var(--bg)"/><path d="M29 32h3" stroke-linecap="round"/></g></svg><span><strong>Mobile &amp; Web Apps</strong><small>High-quality apps for Android, iOS and web.</small></span></a></li></ul><a class="menu-foot" href="/solutions/">Explore AI solutions</a></div></li>
+        <li><a href="/about/">Company</a></li>
+        <li><a href="/support/" aria-current="page">Support</a></li>
+      </ul>
+      <a class="pill pill-nav" href="/contact/">Get in Touch</a>
+    </div>
   </nav>
 </header>
 <main id="main">
 <section class="about-hero">
   <div class="container center narrow">
     <h1 class="hero-eyebrow">Support</h1>
-    <p class="hero-headline">We're here to help.</p>
+    <p class="hero-headline">We're here to help<span class="dot">.</span></p>
     <p class="hero-sub">Tell us the app name, your phone model and Android version, and what happened. We read every message.</p>
   </div>
 </section>
@@ -61,7 +65,7 @@
 </section>
 <section class="section faq-section">
   <div class="container narrow">
-    <h2 class="section-headline">Frequently asked questions.</h2>
+    <h2 class="section-headline">Frequently asked questions<span class="dot">.</span></h2>
     <details class="faq"><summary>Do I need an account?</summary><p>No. Smart Notes, Family Tree and Gravito work without an account or sign-up.</p></details><details class="faq"><summary>Where is my data stored?</summary><p>On your device. Smart Notes can also back up to your own Google Drive, and Family Tree saves backups to a folder you choose. If you sign in to Google Play Games, Gravito keeps a cloud save in your own Google account.</p></details><details class="faq"><summary>How do I remove ads?</summary><p>Smart Notes and Family Tree offer Premium, which removes ads. Gravito has no banner or interstitial ads: a reward video plays only when you tap Watch.</p></details><details class="faq"><summary>I bought Premium on another phone. How do I get it back?</summary><p>Sign in to Google Play with the same Google account you used to buy it, then open the app. Purchases are restored through Google Play.</p></details><details class="faq"><summary>How do I get a refund?</summary><p>Purchases are handled by Google Play. You can request a refund through <a href="https://support.google.com/googleplay/answer/2479637">Google Play's refund page</a>.</p></details><details class="faq"><summary>How do I delete my data?</summary><p>Delete notes or trees in the app, or uninstall it. In Gravito, Settings › Reset progress erases your progress and overwrites your cloud save, and your Play Games data can be managed in the Play Games app or your Google Account.</p></details>
   </div>
 </section>
@@ -71,12 +75,21 @@
     <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/" class="crumb-home" aria-label="Digital AI Labs"><img class="mark" src="/assets/img/brand/mark.svg" alt="" width="100" height="90"></a><svg class="chev" viewBox="0 0 8 14" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Support</span></nav>
     <div class="directory">
       <div class="dir-col">
-        <h3>Apps</h3>
+        <h3>Products</h3>
         <ul>
           <li><a href="/smart-notes/">Smart Notes</a></li>
           <li><a href="/family-tree/">Family Tree</a></li>
           <li><a href="/gravito/">Gravito</a></li>
           <li><a href="https://play.google.com/store/apps/developer?id=Digital+AI+Labs">All apps on Google Play</a></li>
+        </ul>
+      </div>
+      <div class="dir-col">
+        <h3>Solutions</h3>
+        <ul>
+          <li><a href="/solutions/#engineering">Product Engineering</a></li>
+          <li><a href="/solutions/#ai">AI &amp; Automation</a></li>
+          <li><a href="/solutions/#apps">Mobile &amp; Web Apps</a></li>
+          <li><a href="/contact/">Get in touch</a></li>
         </ul>
       </div>
       <div class="dir-col">
@@ -89,11 +102,11 @@
         </ul>
       </div>
       <div class="dir-col">
-        <h3>Digital AI Labs</h3>
+        <h3>Company</h3>
         <ul>
           <li><a href="/about/">About</a></li>
           <li><a href="/support/">Support</a></li>
-          <li><a href="mailto:digitalailabs@gmail.com">Contact</a></li>
+          <li><a href="/contact/">Contact</a></li>
         </ul>
       </div>
     </div>
