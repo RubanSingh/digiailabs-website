@@ -148,6 +148,11 @@ ul, ol { padding: 0; list-style: none; }
 }
 .brand:hover { text-decoration: none; }
 .mark { width: 30px; height: auto; flex: none; }
+.brand-logo, .brand-logo-dark { display: block; height: 36px; width: auto; }
+.brand-logo-dark { display: none; }
+.theme-gravito .brand-logo { display: none; }
+.theme-gravito .brand-logo-dark { display: block; }
+@media (max-width: 960px) { .brand-logo, .brand-logo-dark { height: 30px; } }
 .brand .ai {
   background: var(--grad);
   -webkit-background-clip: text;
@@ -723,8 +728,19 @@ ul, ol { padding: 0; list-style: none; }
 .about-hero { padding: 96px 0 24px; text-align: center; }
 .about-hero .hero-headline { margin-top: 12px; }
 .wide-banner { max-width: 1120px; margin-top: 56px; }
-.brand-banner { width: 100%; border-radius: var(--radius); }
-@media (max-width: 734px) { .wide-banner { margin-top: 40px; } .brand-banner { border-radius: 18px; } }
+.brand-card {
+  display: grid;
+  place-items: center;
+  padding: 72px 8%;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(60% 90% at 100% 0%, rgba(150, 120, 255, 0.18), transparent 60%),
+    radial-gradient(50% 80% at 0% 100%, rgba(60, 200, 255, 0.12), transparent 60%),
+    #fff;
+  box-shadow: 0 0 0 1px rgba(24, 47, 94, 0.08), 0 30px 60px -30px rgba(24, 32, 96, 0.25);
+}
+.brand-card img { width: min(720px, 100%); height: auto; }
+@media (max-width: 734px) { .wide-banner { margin-top: 40px; } .brand-card { padding: 40px 7%; border-radius: 20px; } }
 .notfound { padding-block: 160px; }
 
 .founder { background: var(--bg); }
@@ -1042,20 +1058,21 @@ html.reveal-armed [data-reveal].is-visible { opacity: 1; transform: none; }
 }
 .home-hero .ctas { margin-top: 36px; }
 
-.hero-visual { position: relative; justify-self: center; width: min(500px, 100%); }
-.hero-visual.small { width: min(400px, 100%); }
-.hero-mark {
+.hero-visual { position: relative; justify-self: end; width: min(640px, 112%); margin-right: -6%; }
+.hero-visual.small { width: min(560px, 100%); margin-right: -4%; }
+.hero-art { display: block; mix-blend-mode: multiply; }
+.hero-art img {
+  display: block;
   width: 100%;
-  filter: drop-shadow(0 36px 56px rgba(64, 76, 255, 0.30)) drop-shadow(0 8px 16px rgba(64, 76, 255, 0.12));
-}
-.hero-mark-reflection {
-  width: 100%;
-  margin-top: 2px;
-  margin-bottom: -58%;
-  transform: scaleY(-1);
-  opacity: 0.2;
-  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 38%);
-  mask-image: linear-gradient(to top, #000 0%, transparent 38%);
+  height: auto;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 9%, #000 80%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 9%, #000 80%, transparent 100%);
+  mask-composite: intersect;
 }
 
 @media (max-width: 1068px) {
@@ -1065,9 +1082,7 @@ html.reveal-armed [data-reveal].is-visible { opacity: 1; transform: none; }
 @media (max-width: 834px) {
   .home-hero { padding: 48px 0 64px; }
   .home-hero-inner { grid-template-columns: 1fr; gap: 24px; }
-  .hero-visual { width: min(340px, 78%); order: -1; }
-  .hero-visual.small { width: min(280px, 66%); }
-  .hero-mark-reflection { display: none; }
+  .hero-visual, .hero-visual.small { justify-self: center; width: min(460px, 108%); margin: -12px 0 -24px; order: -1; }
 }
 @media (max-width: 734px) {
   .home-headline { font-size: 40px; line-height: 1.08; letter-spacing: -0.03em; }
@@ -1246,18 +1261,6 @@ html.reveal-armed [data-reveal].is-visible { opacity: 1; transform: none; }
   vertical-align: middle;
 }
 
-.hero-visual { isolation: isolate; }
-.hero-visual::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  left: 10%; right: 6%; top: 46%;
-  height: 24%;
-  background: linear-gradient(90deg, rgba(0, 216, 255, 0.24), rgba(86, 75, 245, 0.2), rgba(216, 79, 255, 0.22));
-  filter: blur(44px);
-}
-
-
 .home-cta {
   padding: 104px 0 120px;
   border-top: 1px solid var(--line-soft);
@@ -1311,22 +1314,14 @@ html.reveal-armed [data-reveal].is-visible { opacity: 1; transform: none; }
   .home-hero-copy > :nth-child(6), .product-hero .container > :nth-child(6) { animation-delay: 0.4s; }
   @keyframes enter-up { from { opacity: 0; transform: translateY(22px); } }
 
-  /* -------- glass mark: rise, then float; reflection moves the opposite way */
-  .hero-mark {
+  /* -------- hero art: rise, then float gently */
+  .hero-art img {
     animation:
       mark-rise 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both,
       mark-float 10s ease-in-out 1.4s infinite;
   }
-  .hero-mark-reflection {
-    animation:
-      reflect-rise 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both,
-      reflect-float 10s ease-in-out 1.4s infinite;
-  }
   @keyframes mark-rise { from { opacity: 0; transform: translateY(36px) scale(0.96); } }
-  @keyframes mark-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
-  @keyframes reflect-rise { from { opacity: 0; transform: scaleY(-1) translateY(-36px); } to { opacity: 0.2; transform: scaleY(-1); } }
-  @keyframes reflect-float { 0%, 100% { transform: scaleY(-1) translateY(0); opacity: 0.2; } 50% { transform: scaleY(-1) translateY(-7px); opacity: 0.16; } }
-
+  @keyframes mark-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
   /* -------- product hero: side phones fan out from behind the centre */
   .product-hero .fan-center { animation: mark-rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.3s both; }
@@ -1345,17 +1340,4 @@ html.reveal-armed [data-reveal].is-visible { opacity: 1; transform: none; }
 }
 
 
-/* ================================================================== hero light streak */
-.home-hero::after {
-  content: "";
-  position: absolute;
-  right: -8%; top: 52%;
-  width: 70%; height: 220px;
-  background: radial-gradient(50% 40% at 50% 50%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 70%),
-              linear-gradient(100deg, rgba(120, 200, 255, 0) 10%, rgba(140, 150, 255, 0.22) 45%, rgba(200, 120, 255, 0.22) 65%, rgba(200, 120, 255, 0) 90%);
-  transform: rotate(-9deg);
-  filter: blur(18px);
-  pointer-events: none;
-}
-.home-hero-inner { z-index: 1; }
 .page-hero.about-top::after, .page-hero.support-top::after, .contact-hero::after { display: none; }
