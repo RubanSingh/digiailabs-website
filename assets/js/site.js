@@ -92,18 +92,84 @@
 
   // Reveal on scroll, once. Skipped entirely when reduced motion is requested.
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var items = document.querySelectorAll("[data-reveal]");
-  if (reduce || !("IntersectionObserver" in window)) {
+
+  // Soft shadow under the navigation once the page scrolls.
+  var nav = document.querySelector(".globalnav");
+  if (nav) {
+    var onScroll = function () { nav.classList.toggle("is-scrolled", window.scrollY > 8); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  // Opt sections into scroll reveals. Only elements that start below the fold
+  // are hidden, so nothing visible on load ever flickers.
+  if (!reduce) {
+    var fold = window.innerHeight * 0.92;
+    var below = function (el) { return el.getBoundingClientRect().top > fold; };
+    var single = [
+      [".block-head", 0], [".section-headline", 0], [".section-intro", 90],
+      [".gallery", 120], [".solutions-band", 0], [".home-cta .container", 0],
+      [".cta-band .container", 0], [".specs", 0], [".founder-photo", 0],
+      [".founder-copy", 120], [".contact-card", 0], [".contact-include", 0], [".faq", 0]
+    ];
+    single.forEach(function (pair) {
+      document.querySelectorAll(pair[0]).forEach(function (el) {
+        if (!el.hasAttribute("data-reveal") && below(el)) {
+          el.setAttribute("data-reveal", "");
+          if (pair[1]) el.style.setProperty("--d", pair[1] + "ms");
+        }
+      });
+    });
+    [".product-cols", ".services", ".steps", ".app-cards", ".service-cards", ".feature-grid"].forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (list) {
+        Array.prototype.forEach.call(list.children, function (child, i) {
+          if (!below(child)) return;
+          if (!child.hasAttribute("data-reveal")) child.setAttribute("data-reveal", "");
+          if (!child.style.getPropertyValue("--d")) child.style.setProperty("--d", (i % 4) * 100 + "ms");
+        });
+      });
+    });
+    document.querySelectorAll(".founder-photo[data-reveal], .bigscreen-media[data-reveal]").forEach(function (el) {
+      el.setAttribute("data-reveal", "scale");
+    });
+  }
+
+  var items = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
+  if (reduce || !items.length) {
     items.forEach(function (el) { el.classList.add("is-visible"); });
     return;
   }
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        io.unobserve(entry.target);
-      }
+
+  // Fail-safe reveal: anything already on screen is shown before hiding is
+  // armed, and a scroll-position check backs up the IntersectionObserver.
+  function show(el) { el.classList.add("is-visible"); }
+  function inView(el) { var r = el.getBoundingClientRect(); return r.top < window.innerHeight * 0.92 && r.bottom > 0; }
+  items.forEach(function (el) { if (inView(el)) show(el); });
+  root.classList.add("reveal-armed");
+
+  var pending = items.filter(function (el) { return !el.classList.contains("is-visible"); });
+  var ticking = false;
+  function check() {
+    ticking = false;
+    pending = pending.filter(function (el) {
+      if (inView(el) || window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) { show(el); return false; }
+      return true;
     });
-  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
-  items.forEach(function (el) { io.observe(el); });
+    if (!pending.length) {
+      window.removeEventListener("scroll", onScrollCheck);
+      window.removeEventListener("resize", onScrollCheck);
+    }
+  }
+  function onScrollCheck() { if (!ticking) { ticking = true; window.requestAnimationFrame(check); } }
+  window.addEventListener("scroll", onScrollCheck, { passive: true });
+  window.addEventListener("resize", onScrollCheck);
+
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { show(entry.target); io.unobserve(entry.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    pending.forEach(function (el) { io.observe(el); });
+  }
 })();
