@@ -1,10 +1,18 @@
 # digiailabs.com
 
-Website for **DigiAI Labs** (Digital AI Labs on Google Play), hosted on GitHub Pages.
+Website for **Digital AI Labs**, hosted on GitHub Pages at https://digiailabs.com.
 
-- `index.html` – home page (apps, about, contact)
-- `styles.css` – all styles
-- `assets/apps/` – app icons from the Google Play listings
-- `CNAME` – custom domain for GitHub Pages
+## Pages
+- `/` – home
+- `/smart-notes/`, `/family-tree/`, `/gravito/` – product pages
+- `/smart-notes/privacy/`, `/family-tree/privacy/`, `/gravito/privacy/` – app privacy policies
+- `/privacy/`, `/about/`, `/support/`
 
-To update the site, edit the files and push to `main`. GitHub Pages republishes automatically.
+## Files
+- `assets/css/site.css` – all styles
+- `assets/js/site.js` – mobile menu, gallery, scroll reveals
+- `assets/fonts/` – self-hosted Inter (SIL Open Font License)
+- `assets/img/` – app screenshots, icons, brand and share images
+- `app-ads.txt`, `CNAME`, `robots.txt`, `sitemap.xml`
+
+Pushing to `main` republishes the site automatically.
