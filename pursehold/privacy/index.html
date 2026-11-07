@@ -67,7 +67,7 @@
     <li>No account and no bank login. Digital AI Labs doesn't run a server that stores your finances, and we can't see your data.</li>
     <li>Your accounts, transactions, budgets, bills, goals, profiles and receipts are stored only on your device, in an encrypted database.</li>
     <li>No ads, and the app doesn't use your advertising ID.</li>
-    <li>Usage analytics and crash reports are sent only if you turn them on. They never include amounts, payees, account names or notes.</li>
+    <li>Usage analytics are sent only if you turn them on. Crash reports start switched on during setup in most countries (off in the EU, EEA, UK and Switzerland), and you can turn them off at any time. Neither ever includes amounts, payees, account names or notes.</li>
     <li>Payments for Pro are handled by Google Play. We never see your card details.</li>
   </ul>
 </section>
@@ -81,8 +81,8 @@
 
 <h2 id="backups">Backups</h2>
 <ul>
-  <li><strong>Encrypted backups.</strong> A Pursehold backup is a file encrypted with a passphrase you choose, with a Recovery Key in a printable Recovery Kit as a fallback. You decide where to save it, for example your Downloads folder or a cloud drive app. We can't open your backups, and we can't recover a lost passphrase or Recovery Key.</li>
-  <li><strong>Android backup.</strong> Pursehold opts out of Android's automatic cloud backup and of device-to-device transfer, so its data isn't copied to your Google account. To move to a new phone, use an encrypted backup.</li>
+  <li><strong>Backups.</strong> A Pursehold backup is a file you save where you choose, for example your Downloads folder or a cloud drive app. On your first backup you decide how it's protected. <strong>With a passphrase</strong> (recommended), the file is encrypted on your phone, with a Recovery Key in a printable Recovery Kit as a fallback; we can't open it, and we can't recover a lost passphrase or Recovery Key. <strong>Without a passphrase</strong>, it's a normal file that anyone who has it can read, so keep it somewhere private. You can change this at any time in Backup &amp; restore.</li>
+  <li><strong>Android backup.</strong> Pursehold opts out of Android's automatic cloud backup and of device-to-device transfer, so its data isn't copied to your Google account. To move to a new phone, use a Pursehold backup file.</li>
 </ul>
 
 <h2 id="sharing">Information you choose to share</h2>
@@ -93,13 +93,13 @@
 </ul>
 
 <h2 id="services">Google services used by the app</h2>
-<p>Pursehold uses the following services provided by Google. None of them receive your amounts, payees, account names, notes or receipts. Firebase Analytics and Crashlytics are switched off when the app is installed and start only if you turn them on during setup or in Settings.</p>
+<p>Pursehold uses the following services provided by Google. None of them receive your amounts, payees, account names, notes or receipts. Firebase Analytics is switched off when the app is installed and starts only if you turn it on during setup or in Settings. Firebase Crashlytics starts only after setup: the "Send crash reports" switch on the setup privacy step is on by default in most countries and off in the EU, EEA, UK and Switzerland, and you can change it there or later in Settings.</p>
 <div class="table-wrap">
 <table>
   <thead><tr><th scope="col">Service</th><th scope="col">What it's used for</th><th scope="col">Information it processes</th></tr></thead>
   <tbody>
     <tr><td>Firebase Analytics</td><td>Understanding which screens and features are used, so we can improve the app. Only if you turn on "Share usage analytics", and paused while a child's profile is open.</td><td>An app instance ID, app events such as first open and session start, how the app was installed, device model, Android version, language, and country or region derived from your IP address. Not your advertising ID or Android ID. Kept for 2 months.</td></tr>
-    <tr><td>Firebase Crashlytics</td><td>Finding and fixing crashes. Only if you turn on "Send crash reports".</td><td>Crash details and stack traces, a Crashlytics installation ID, device model, Android version, available memory and storage, app version, and recent app log lines. Log lines are written without amounts, names or notes, and filtered to remove long numbers, email addresses and UPI IDs. Kept for 90 days.</td></tr>
+    <tr><td>Firebase Crashlytics</td><td>Finding and fixing crashes. Only while "Send crash reports" is on (on by default in most countries, off by default in the EU, EEA, UK and Switzerland).</td><td>Crash details and stack traces, a Crashlytics installation ID, device model, Android version, available memory and storage, app version, and recent app log lines. Log lines are written without amounts, names or notes, and filtered to remove long numbers, email addresses and UPI IDs. Kept for 90 days.</td></tr>
     <tr><td>Google Play Billing</td><td>Processing Pro purchases and subscriptions</td><td>Purchase status and token. Payment details stay with Google.</td></tr>
     <tr><td>Google Play In-App Review</td><td>Showing Google Play's rating card</td><td>Your rating goes to Google Play. The app doesn't see it.</td></tr>
     <tr><td>Google Play In-App Updates</td><td>Letting you know when an update is available</td><td>App version</td></tr>
@@ -121,7 +121,7 @@
 </ul>
 
 <h2 id="use">How we use information</h2>
-<p>We use the information described above only to run the app, process purchases, fix problems, understand which features are useful (if you allow it), and reply when you contact us. We rely on your consent for usage analytics and crash reports, and on providing the app you asked for to process purchases. We don't sell your personal information or share it for advertising.</p>
+<p>We use the information described above only to run the app, process purchases, fix problems, understand which features are useful (if you allow it), and reply when you contact us. We rely on your consent for usage analytics, and for crash reports in the EU, EEA, UK and Switzerland. Elsewhere we send crash reports to keep the app working reliably, and you can switch them off at any time. We rely on providing the app you asked for to process purchases. We don't sell your personal information or share it for advertising.</p>
 
 <h2 id="retention">Keeping and deleting your information</h2>
 <p>You can delete any entry, account, budget, goal or profile in the app. <strong>Settings › Data &amp; consent › Delete all data</strong> erases every profile with its encryption keys, receipts, reminders and settings, and returns the app to its first screen. It asks you to confirm with your phone's screen lock first. Uninstalling Pursehold also removes everything it stored on your device, but not backups or exports you saved elsewhere.</p>
